@@ -502,8 +502,62 @@ function loginAs(user) {
 
 function doDemo() {
   currentUser = { uid: 'demo', email: '', name: 'デモユーザー', isDemo: true };
-  loadAll(); renderNav(); goHome();
+  // デモ用サンプルデータ（既存データがない場合のみ挿入）
+  try { sessionStorage.removeItem('tabimemo_demo'); } catch {}
+  trips = DEMO_TRIPS();
+  cache = {};
+  saveAll();
+  renderNav(); goHome();
   showScreen('homeScreen');
+}
+
+function DEMO_TRIPS() {
+  const id = () => Math.random().toString(36).slice(2);
+  return [
+    {
+      id: id(), name: '東京2日間モデルコース', emoji: '🗼', color: '#FF6B6B', createdAt: Date.now(),
+      days: [
+        {
+          id: id(), label: '1日目', date: '',
+          spots: [
+            { name: '浅草寺', lat: 35.7148, lon: 139.7967, addr: '東京都台東区浅草2-3-1', startTime: '09:00', arrival: '09:00', stay: 60, note: '雷門・仲見世通りも散策', seg: { mode: 'walk', mins: 5, auto: true } },
+            { name: '隅田公園', lat: 35.7121, lon: 139.8013, addr: '東京都台東区花川戸2', startTime: null, arrival: '10:05', stay: 20, note: '川沿いの散歩・スカイツリーの眺めが良い', seg: { mode: 'train', mins: 10, auto: true } },
+            { name: '東京スカイツリー', lat: 35.7101, lon: 139.8107, addr: '東京都墨田区押上1-1-2', startTime: null, arrival: '10:35', stay: 90, note: '展望台は事前予約推奨・混雑注意', seg: { mode: 'train', mins: 18, auto: true } },
+            { name: '上野公園・上野動物園', lat: 35.7153, lon: 139.7713, addr: '東京都台東区上野公園5-20', startTime: null, arrival: '12:23', stay: 90, note: '東京国立博物館もすぐ近く', seg: { mode: 'train', mins: 25, auto: true } },
+            { name: '秋葉原', lat: 35.7023, lon: 139.7745, addr: '東京都千代田区外神田1', startTime: null, arrival: '14:18', stay: 90, note: 'サブカル・電気街・メイドカフェ', seg: { mode: 'train', mins: 12, auto: true } },
+            { name: '東京駅・丸の内', lat: 35.6812, lon: 139.7671, addr: '東京都千代田区丸の内1', startTime: null, arrival: '16:00', stay: 60, note: '丸ビル・KITTE でショッピング', seg: { mode: 'car', mins: 0, auto: false } }
+          ]
+        },
+        {
+          id: id(), label: '2日目', date: '',
+          spots: [
+            { name: '明治神宮', lat: 35.6763, lon: 139.6993, addr: '東京都渋谷区代々木神園町1-1', startTime: '09:00', arrival: '09:00', stay: 45, note: '朝の参拝がおすすめ・空いている', seg: { mode: 'walk', mins: 12, auto: true } },
+            { name: '原宿・竹下通り', lat: 35.6702, lon: 139.7027, addr: '東京都渋谷区神宮前1', startTime: null, arrival: '09:57', stay: 60, note: 'クレープ・ファッション・若者文化', seg: { mode: 'walk', mins: 10, auto: true } },
+            { name: '表参道', lat: 35.6653, lon: 139.7120, addr: '東京都渋谷区神宮前4', startTime: null, arrival: '11:07', stay: 60, note: 'ハイブランド・おしゃれカフェ', seg: { mode: 'walk', mins: 12, auto: true } },
+            { name: '渋谷スクランブル交差点', lat: 35.6595, lon: 139.7004, addr: '東京都渋谷区道玄坂2-1', startTime: null, arrival: '12:19', stay: 30, note: '世界一有名な交差点・スクランブルスクエアから見下ろすのもおすすめ', seg: { mode: 'train', mins: 8, auto: true } },
+            { name: '新宿御苑', lat: 35.6852, lon: 139.7100, addr: '東京都新宿区内藤町11', startTime: null, arrival: '12:57', stay: 90, note: '広大な庭園・入園料500円・ランチにも', seg: { mode: 'walk', mins: 10, auto: true } },
+            { name: '新宿 歌舞伎町・夜景', lat: 35.6938, lon: 139.7034, addr: '東京都新宿区西新宿2', startTime: null, arrival: '14:37', stay: 60, note: '東京都庁展望台は無料・夕方がきれい', seg: { mode: 'car', mins: 0, auto: false } }
+          ]
+        }
+      ]
+    },
+    {
+      id: id(), name: '京都1日観光コース', emoji: '🌸', color: '#6BCB77', createdAt: Date.now() - 1000,
+      days: [
+        {
+          id: id(), label: '1日目', date: '',
+          spots: [
+            { name: '金閣寺', lat: 35.0394, lon: 135.7292, addr: '京都市北区金閣寺町1', startTime: '09:00', arrival: '09:00', stay: 45, note: '朝イチがおすすめ・8時開門', seg: { mode: 'bus', mins: 12, auto: false } },
+            { name: '龍安寺', lat: 35.0345, lon: 135.7186, addr: '京都市右京区龍安寺御陵下町13', startTime: null, arrival: '09:57', stay: 40, note: '世界遺産の石庭・静かに鑑賞を', seg: { mode: 'bus', mins: 35, auto: false } },
+            { name: '嵐山・渡月橋', lat: 35.0094, lon: 135.6781, addr: '京都市右京区嵐山', startTime: null, arrival: '11:12', stay: 75, note: '竹林の小道は混む前の早めに', seg: { mode: 'train', mins: 35, auto: false } },
+            { name: '四条河原町', lat: 35.0038, lon: 135.7682, addr: '京都市下京区四条河原町', startTime: null, arrival: '13:02', stay: 60, note: '錦市場で食べ歩き・昼食に', seg: { mode: 'walk', mins: 20, auto: true } },
+            { name: '清水寺', lat: 34.9949, lon: 135.7850, addr: '京都市東山区清水1-294', startTime: null, arrival: '14:22', stay: 75, note: '産寧坂・二寧坂の散策も込みで', seg: { mode: 'walk', mins: 15, auto: true } },
+            { name: '祇園・花見小路', lat: 35.0036, lon: 135.7751, addr: '京都市東山区祇園町南側', startTime: null, arrival: '15:52', stay: 60, note: '夕方に舞妓さんに会えることも', seg: { mode: 'car', mins: 0, auto: false } }
+          ]
+        }
+      ]
+    }
+  ];
 }
 
 function doLogout() {
