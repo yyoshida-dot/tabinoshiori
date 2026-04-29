@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -7,23 +8,23 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --p:#FF6B6B; --pl:#FFF0F0; --pd:#E05555;
-  --a:#FFB347; --al:#FFF8EE;
-  --g:#6BCB77; --gl:#F0FBF1;
-  --b:#4D96FF; --bl:#EEF5FF;
-  --t:#2D2D2D; --tm:#9B9B9B;
-  --br:#F0EEEB; --bm:#E5E2DC;
-  --bg:#FAFAF8; --wh:#FFFFFF;
+:root{
+  --p:#FF6B6B;--pl:#FFF0F0;--pd:#E05555;
+  --a:#FFB347;--al:#FFF8EE;
+  --g:#6BCB77;--gl:#F0FBF1;
+  --b:#4D96FF;--bl:#EEF5FF;
+  --t:#2D2D2D;--tm:#9B9B9B;
+  --br:#F0EEEB;--bm:#E5E2DC;
+  --bg:#FAFAF8;--wh:#FFFFFF;
   --sh0:0 1px 4px rgba(0,0,0,.06);
   --sh1:0 4px 20px rgba(0,0,0,.11);
-  --r0:10px; --r1:16px; --r2:24px;
+  --r0:10px;--r1:16px;--r2:24px;
   --f:'Noto Sans JP',sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--f);background:var(--bg);color:var(--t);min-height:100vh;-webkit-font-smoothing:antialiased}
 
-/* NAV */
+/* ── NAV ── */
 nav{background:var(--wh);border-bottom:1.5px solid var(--br);padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
 .nav-logo{display:flex;align-items:center;gap:8px;cursor:pointer}
 .logo-icon{width:32px;height:32px;background:var(--p);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px}
@@ -31,9 +32,40 @@ nav{background:var(--wh);border-bottom:1.5px solid var(--br);padding:0 24px;heig
 .nav-r{display:flex;gap:8px;align-items:center}
 .ibtn{width:36px;height:36px;border-radius:var(--r0);border:1.5px solid var(--bm);background:var(--wh);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:background .12s}
 .ibtn:hover{background:var(--bg)}
+.nav-user{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--tm)}
+.nav-user strong{color:var(--t)}
+.btn-logout{padding:5px 12px;border:1.5px solid var(--bm);border-radius:8px;background:var(--wh);color:var(--tm);font-size:12px;font-family:var(--f);cursor:pointer;transition:all .12s}
+.btn-logout:hover{border-color:var(--p);color:var(--p);background:var(--pl)}
+.demo-badge{font-size:11px;padding:3px 8px;background:var(--al);color:#7a5500;border-radius:20px;border:1px solid #f0d08a;font-weight:700}
 
-/* SCREENS */
+/* ── SCREENS ── */
 .screen{display:none}.screen.active{display:block}
+
+/* ══════════════════════════════
+   AUTH SCREEN
+══════════════════════════════ */
+.auth-wrap{min-height:calc(100vh - 56px);display:flex;align-items:center;justify-content:center;padding:24px}
+.auth-card{background:var(--wh);border:1.5px solid var(--br);border-radius:var(--r2);padding:36px 32px;width:400px;max-width:100%;box-shadow:var(--sh1)}
+.auth-logo{text-align:center;margin-bottom:24px}
+.auth-logo .big-icon{width:56px;height:56px;background:var(--p);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 10px}
+.auth-logo h2{font-size:20px;font-weight:700}
+.auth-logo p{font-size:13px;color:var(--tm);margin-top:4px}
+.auth-tabs{display:flex;border:1.5px solid var(--bm);border-radius:var(--r0);overflow:hidden;margin-bottom:24px}
+.auth-tab{flex:1;padding:9px;background:transparent;border:none;font-size:13px;font-family:var(--f);cursor:pointer;font-weight:500;color:var(--tm);transition:all .12s}
+.auth-tab.active{background:var(--p);color:#fff}
+.auth-field{margin-bottom:14px}
+.auth-field label{display:block;font-size:11px;font-weight:700;color:var(--tm);letter-spacing:.8px;text-transform:uppercase;margin-bottom:5px}
+.auth-field input{width:100%;padding:10px 13px;border:1.5px solid var(--bm);border-radius:var(--r0);font-size:14px;font-family:var(--f);background:var(--bg);color:var(--t);outline:none;transition:border-color .14s}
+.auth-field input:focus{border-color:var(--p);background:var(--wh)}
+.auth-field input::placeholder{color:var(--bm)}
+.btn-auth{width:100%;padding:11px;background:var(--p);color:#fff;border:none;border-radius:var(--r0);font-size:14px;font-weight:700;font-family:var(--f);cursor:pointer;transition:background .12s;margin-top:4px}
+.btn-auth:hover{background:var(--pd)}
+.auth-err{font-size:12px;color:var(--pd);background:var(--pl);padding:8px 12px;border-radius:8px;margin-bottom:12px;display:none}
+.auth-sep{display:flex;align-items:center;gap:10px;margin:18px 0;color:var(--tm);font-size:12px}
+.auth-sep::before,.auth-sep::after{content:'';flex:1;height:1px;background:var(--br)}
+.btn-demo{width:100%;padding:10px;border:1.5px dashed var(--bm);border-radius:var(--r0);font-size:13px;font-family:var(--f);cursor:pointer;color:var(--tm);background:transparent;transition:all .12s}
+.btn-demo:hover{border-color:var(--a);color:var(--a);background:var(--al)}
+.auth-note{font-size:11px;color:var(--tm);text-align:center;margin-top:16px;line-height:1.6}
 
 /* ══ HOME ══ */
 .hwrap{max-width:860px;margin:0 auto;padding:40px 24px}
@@ -61,6 +93,12 @@ nav{background:var(--wh);border-bottom:1.5px solid var(--br);padding:0 24px;heig
 .empty-trips{grid-column:1/-1;text-align:center;padding:56px 20px;background:var(--wh);border:1.5px dashed var(--bm);border-radius:var(--r1);color:var(--tm)}
 .empty-trips .big{font-size:48px;margin-bottom:12px}
 
+/* demo banner */
+.demo-banner{background:var(--al);border:1px solid #f0d08a;border-radius:var(--r0);padding:10px 16px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.demo-banner p{font-size:13px;color:#7a5500}
+.btn-signup-now{padding:6px 16px;background:var(--a);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;font-family:var(--f);cursor:pointer;white-space:nowrap}
+.btn-signup-now:hover{background:#e09a35}
+
 /* ══ PLAN ══ */
 .plan-layout{display:grid;grid-template-columns:270px 1fr;min-height:calc(100vh - 56px);max-width:1160px;margin:0 auto}
 .sidebar{background:var(--wh);border-right:1.5px solid var(--br);padding:18px 0;overflow-y:auto;max-height:calc(100vh - 56px);position:sticky;top:56px}
@@ -85,31 +123,23 @@ nav{background:var(--wh);border-bottom:1.5px solid var(--br);padding:0 24px;heig
 .sb-name{font-size:12px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sb-time{font-size:11px;color:var(--tm)}
 .sb-seg{padding:1px 8px 1px 18px;font-size:11px;color:var(--tm)}
-
-/* Plan main */
 .pmain{padding:24px 28px}
 .ptop{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
 .ptop-l{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
 .ptop-r{display:flex;gap:6px;flex-shrink:0}
 .trip-inp{font-size:19px;font-weight:700;font-family:var(--f);border:none;background:transparent;color:var(--t);outline:none;flex:1;min-width:0}
 .trip-inp::placeholder{color:var(--bm)}
-
-/* stats */
 .stats{display:flex;gap:10px;margin-bottom:18px}
 .stat{flex:1;background:var(--wh);border:1.5px solid var(--br);border-radius:var(--r0);padding:12px 14px}
 .slbl{font-size:11px;color:var(--tm);margin-bottom:2px}
 .sval{font-size:18px;font-weight:700}
 .stat.r .sval{color:var(--p)}.stat.o .sval{color:var(--a)}.stat.g .sval{color:var(--g)}
-
-/* day bar */
 .dbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
 .dbar-l{display:flex;align-items:center;gap:10px}
 .dbar h2{font-size:16px;font-weight:700}
 .date-inp{font-size:12px;color:var(--tm);border:1.5px solid var(--bm);border-radius:8px;padding:4px 10px;font-family:var(--f);background:var(--wh);outline:none}
 .date-inp:focus{border-color:var(--p)}
 .btn-deld{padding:5px 12px;border:1.5px solid #FFD0D0;border-radius:8px;background:#FFF5F5;color:var(--p);font-size:12px;font-family:var(--f);cursor:pointer;font-weight:500}
-
-/* add form */
 .aform{background:var(--wh);border:1.5px solid var(--br);border-radius:var(--r1);padding:18px 20px;margin-bottom:22px}
 .aform-head{display:flex;align-items:center;gap:7px;margin-bottom:13px}
 .aform-head h4{font-size:14px;font-weight:700}
@@ -126,32 +156,53 @@ nav{background:var(--wh);border-bottom:1.5px solid var(--br);padding:0 24px;heig
 .btn-add{padding:8px 18px;background:var(--p);color:#fff;border:none;border-radius:var(--r0);font-size:13px;font-weight:700;font-family:var(--f);cursor:pointer;transition:background .12s}
 .btn-add:hover{background:var(--pd)}
 
-/* ══ TIMELINE ══
-   Layout: spot-card → travel-segment → spot-card → …
-   The travel segment lives BETWEEN two spot cards.
-   Arrival of spot[i+1] = departure(spot[i]) + travel[i]
-   departure(spot[i]) = arrival(spot[i]) + stay(spot[i])
-*/
-/* ── drag & drop ── */
+/* drag & drop */
 .tl-item{position:relative;transition:opacity .15s}
 .tl-item.dragging{opacity:.4}
-.tl-item.drag-over-top::before{
-  content:'';position:absolute;top:-3px;left:0;right:0;height:3px;
-  background:var(--p);border-radius:3px;z-index:10;
-}
-.tl-item.drag-over-bottom::after{
-  content:'';position:absolute;bottom:-3px;left:0;right:0;height:3px;
-  background:var(--p);border-radius:3px;z-index:10;
-}
-.drag-handle{
-  cursor:grab;padding:4px 6px;color:var(--bm);font-size:16px;
-  line-height:1;border-radius:6px;transition:color .12s;
-  user-select:none;flex-shrink:0;
-}
+.tl-item.drag-over-top::before{content:'';position:absolute;top:-3px;left:0;right:0;height:3px;background:var(--p);border-radius:3px;z-index:10}
+.tl-item.drag-over-bottom::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:3px;background:var(--p);border-radius:3px;z-index:10}
+.drag-handle{cursor:grab;padding:4px 6px;color:var(--bm);font-size:16px;line-height:1;border-radius:6px;transition:color .12s;user-select:none;flex-shrink:0}
 .drag-handle:hover{color:var(--tm);background:var(--bg)}
 .drag-handle:active{cursor:grabbing}
 
-/* ══ CANDIDATE PICKER ══ */
+/* timeline */
+.tl{display:flex;flex-direction:column}
+.tl-item{display:flex;gap:10px}
+.tl-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:32px}
+.tl-dot{width:13px;height:13px;border-radius:50%;background:var(--wh);border:3px solid var(--p);flex-shrink:0;margin-top:15px}
+.tl-line{width:2px;background:var(--bm);flex:1;min-height:12px}
+.tl-body{flex:1;padding-bottom:4px;min-width:0}
+.sc{background:var(--wh);border:1.5px solid var(--br);border-radius:var(--r1);padding:14px 15px;margin-bottom:0;transition:border-color .14s,box-shadow .14s}
+.sc:hover{border-color:var(--bm)}
+.sc-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.sc-l{flex:1;min-width:0}
+.sc-num{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:5px;background:var(--pl);color:var(--p);font-size:10px;font-weight:700;margin-bottom:4px}
+.sc-name{font-size:14px;font-weight:700;margin-bottom:5px}
+.sc-tags{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.tag{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:500}
+.tt{background:var(--pl);color:var(--pd)}
+.ts{background:var(--gl);color:#2a6a33}
+.tn{background:var(--al);color:#7a5500;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sc-btns{display:flex;gap:4px;flex-shrink:0}
+.scbtn{width:28px;height:28px;border-radius:7px;border:1.5px solid var(--bm);background:var(--wh);cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:all .12s}
+.scbtn:hover{border-color:var(--p);background:var(--pl)}
+.sc-addr{font-size:11px;color:var(--tm);margin-top:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.seg{background:var(--bg);border:1.5px solid var(--bm);border-radius:var(--r0);padding:10px 14px;margin:6px 0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.seg-mode select{padding:5px 8px;border:1.5px solid var(--bm);border-radius:8px;font-size:12px;font-family:var(--f);background:var(--wh);color:var(--t);cursor:pointer;outline:none}
+.seg-mode select:focus{border-color:var(--p)}
+.seg-dur{display:flex;align-items:center;gap:6px}
+.seg-dur label{font-size:11px;color:var(--tm);white-space:nowrap}
+.seg-dur input{width:70px;padding:5px 8px;border:1.5px solid var(--bm);border-radius:8px;font-size:13px;font-weight:700;font-family:var(--f);background:var(--wh);color:var(--t);outline:none;text-align:center}
+.seg-dur input:focus{border-color:var(--p)}
+.seg-auto{padding:5px 12px;border:1.5px solid var(--bm);border-radius:8px;background:var(--wh);font-size:12px;font-family:var(--f);cursor:pointer;color:var(--tm);white-space:nowrap;transition:all .12s}
+.seg-auto:hover{border-color:var(--p);color:var(--p);background:var(--pl)}
+.seg-auto.loading{color:var(--a);border-color:var(--a)}
+.seg-arrow{display:flex;align-items:center;gap:5px;margin-left:auto;font-size:12px;color:var(--tm)}
+.seg-arrow strong{font-size:13px;color:var(--t)}
+.tl-empty{text-align:center;padding:52px 20px;background:var(--wh);border:1.5px dashed var(--bm);border-radius:var(--r1);color:var(--tm)}
+.tl-empty .big{font-size:44px;margin-bottom:10px}
+
+/* candidate picker */
 .cand-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.38);z-index:300;align-items:center;justify-content:center}
 .cand-overlay.open{display:flex}
 .cand-box{background:var(--wh);border-radius:var(--r2);padding:24px;width:480px;max-width:93vw;box-shadow:var(--sh1);max-height:80vh;display:flex;flex-direction:column}
@@ -168,59 +219,7 @@ nav{background:var(--wh);border-bottom:1.5px solid var(--br);padding:0 24px;heig
 .cand-dist{font-size:11px;color:var(--p);font-weight:700;flex-shrink:0;margin-top:2px}
 .cand-acts{display:flex;gap:8px;margin-top:16px;justify-content:flex-end}
 
-.tl{display:flex;flex-direction:column}
-.tl-item{display:flex;gap:10px}
-.tl-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:32px}
-.tl-dot{width:13px;height:13px;border-radius:50%;background:var(--wh);border:3px solid var(--p);flex-shrink:0;margin-top:15px}
-.tl-line{width:2px;background:var(--bm);flex:1;min-height:12px}
-.tl-body{flex:1;padding-bottom:4px;min-width:0}
-
-/* spot card */
-.sc{background:var(--wh);border:1.5px solid var(--br);border-radius:var(--r1);padding:14px 15px;margin-bottom:0;transition:border-color .14s,box-shadow .14s}
-.sc:hover{border-color:var(--bm)}
-.sc-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
-.sc-l{flex:1;min-width:0}
-.sc-num{display:inline-flex;align-items:center;justify-content:center;width:19px;height:19px;border-radius:5px;background:var(--pl);color:var(--p);font-size:10px;font-weight:700;margin-bottom:4px}
-.sc-name{font-size:14px;font-weight:700;margin-bottom:5px}
-.sc-tags{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
-.tag{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:500}
-.tt{background:var(--pl);color:var(--pd)} /* time */
-.ts{background:var(--gl);color:#2a6a33}   /* stay */
-.tn{background:var(--al);color:#7a5500;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap} /* note */
-.sc-btns{display:flex;gap:4px;flex-shrink:0}
-.scbtn{width:28px;height:28px;border-radius:7px;border:1.5px solid var(--bm);background:var(--wh);cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:all .12s}
-.scbtn:hover{border-color:var(--p);background:var(--pl)}
-.sc-addr{font-size:11px;color:var(--tm);margin-top:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-
-/* travel segment – lives between two spot-cards */
-.seg{
-  background:var(--bg);
-  border:1.5px solid var(--bm);
-  border-radius:var(--r0);
-  padding:10px 14px;
-  margin:6px 0;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-}
-.seg-mode select{padding:5px 8px;border:1.5px solid var(--bm);border-radius:8px;font-size:12px;font-family:var(--f);background:var(--wh);color:var(--t);cursor:pointer;outline:none}
-.seg-mode select:focus{border-color:var(--p)}
-.seg-dur{display:flex;align-items:center;gap:6px}
-.seg-dur label{font-size:11px;color:var(--tm);white-space:nowrap}
-.seg-dur input{width:70px;padding:5px 8px;border:1.5px solid var(--bm);border-radius:8px;font-size:13px;font-weight:700;font-family:var(--f);background:var(--wh);color:var(--t);outline:none;text-align:center}
-.seg-dur input:focus{border-color:var(--p)}
-.seg-auto{padding:5px 12px;border:1.5px solid var(--bm);border-radius:8px;background:var(--wh);font-size:12px;font-family:var(--f);cursor:pointer;color:var(--tm);white-space:nowrap;transition:all .12s}
-.seg-auto:hover{border-color:var(--p);color:var(--p);background:var(--pl)}
-.seg-auto.loading{color:var(--a);border-color:var(--a)}
-.seg-arrow{display:flex;align-items:center;gap:5px;margin-left:auto;font-size:12px;color:var(--tm)}
-.seg-arrow strong{font-size:13px;color:var(--t)}
-
-/* empty */
-.tl-empty{text-align:center;padding:52px 20px;background:var(--wh);border:1.5px dashed var(--bm);border-radius:var(--r1);color:var(--tm)}
-.tl-empty .big{font-size:44px;margin-bottom:10px}
-
-/* ══ MODALS ══ */
+/* modals */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.33);z-index:200;align-items:center;justify-content:center}
 .overlay.open{display:flex}
 .modal{background:var(--wh);border-radius:var(--r2);padding:26px;width:460px;max-width:93vw;box-shadow:var(--sh1)}
@@ -248,7 +247,7 @@ nav{background:var(--wh);border-bottom:1.5px solid var(--br);padding:0 24px;heig
   .pmain{padding:14px}.hwrap{padding:24px 14px}.tgrid{grid-template-columns:1fr 1fr}
 }
 @media print{
-  nav,.sidebar,.aform,.ptop-r,.dbar button,.sc-btns,.seg-auto{display:none!important}
+  nav,.sidebar,.aform,.ptop-r,.dbar button,.sc-btns,.seg-auto,.demo-banner{display:none!important}
   .plan-layout{display:block}
 }
 </style>
@@ -260,19 +259,53 @@ nav{background:var(--wh);border-bottom:1.5px solid var(--br);padding:0 24px;heig
     <div class="logo-icon">🗺</div>
     <span>たびメモ</span>
   </div>
-  <div class="nav-r">
-    <button class="ibtn" onclick="importTrip()" title="読込">📂</button>
-    <input type="file" id="fileInput" accept=".json" style="display:none" onchange="loadFile(event)">
+  <div class="nav-r" id="navR">
+    <!-- populated by renderNav() -->
   </div>
 </nav>
 
-<!-- ══ HOME ══ -->
-<div class="screen active" id="homeScreen">
+<!-- ══ AUTH SCREEN ══ -->
+<div class="screen active" id="authScreen">
+  <div class="auth-wrap">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="big-icon">🗺</div>
+        <h2>たびメモ</h2>
+        <p>旅行プランをかんたんに作成・管理</p>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">ログイン</button>
+        <button class="auth-tab" id="tabSignup" onclick="switchAuthTab('signup')">新規登録</button>
+      </div>
+      <div id="authErr" class="auth-err"></div>
+      <div class="auth-field" id="signupNameWrap" style="display:none">
+        <label>ニックネーム</label>
+        <input id="authName" placeholder="例：たろう" autocomplete="nickname">
+      </div>
+      <div class="auth-field">
+        <label>メールアドレス</label>
+        <input id="authEmail" type="email" placeholder="example@email.com" autocomplete="email">
+      </div>
+      <div class="auth-field">
+        <label>パスワード</label>
+        <input id="authPass" type="password" placeholder="6文字以上" autocomplete="current-password">
+      </div>
+      <button class="btn-auth" id="authBtn" onclick="doAuth()">ログイン</button>
+      <div class="auth-sep">または</div>
+      <button class="btn-demo" onclick="doDemo()">👀 デモモードで試す（登録不要）</button>
+      <p class="auth-note">※ データはこのブラウザにのみ保存されます<br>パスワードは暗号化して保存されます</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ HOME SCREEN ══ -->
+<div class="screen" id="homeScreen">
   <div class="hwrap">
     <div class="hhero">
       <div><h1>✈️ わたしの旅行</h1><p>旅のプランをかんたんに作成・管理できます</p></div>
       <button class="btn-new" onclick="openNewModal()">＋ 新しい旅行</button>
     </div>
+    <div id="demoBanner"></div>
     <div class="srow">
       <div class="slabel">保存された旅行</div>
       <button class="btn-imp" onclick="importTrip()">📂 読み込む</button>
@@ -281,7 +314,7 @@ nav{background:var(--wh);border-bottom:1.5px solid var(--br);padding:0 24px;heig
   </div>
 </div>
 
-<!-- ══ PLAN ══ -->
+<!-- ══ PLAN SCREEN ══ -->
 <div class="screen" id="planScreen">
   <div class="plan-layout">
     <aside class="sidebar">
@@ -337,6 +370,23 @@ nav{background:var(--wh);border-bottom:1.5px solid var(--br);padding:0 24px;heig
   </div>
 </div>
 
+<!-- Candidate picker -->
+<div class="cand-overlay" id="candOverlay">
+  <div class="cand-box">
+    <h3>📍 場所を選択してください</h3>
+    <div class="cand-sub" id="candSub"></div>
+    <div class="cand-list" id="candList"></div>
+    <div id="candNameBanner" style="display:none;margin-top:12px;padding:10px 12px;background:var(--al);border-radius:var(--r0);border:1px solid #f0d08a;font-size:12px;color:#7a5500;display:flex;align-items:center;gap:8px">
+      <span>💡 スポット名が違う場合は</span>
+      <button class="bsec" style="font-size:12px;padding:4px 10px;border-color:#d4a843;color:#7a5500" onclick="closeCandPicker('useInputName')">「<span id="candInputName"></span>」の名前で登録</button>
+    </div>
+    <div class="cand-acts">
+      <button class="bsec" onclick="closeCandPicker(false)">キャンセル</button>
+      <button class="bok" onclick="closeCandPicker(true)">この場所に決定</button>
+    </div>
+  </div>
+</div>
+
 <!-- New trip modal -->
 <div class="overlay" id="newModal" onclick="if(event.target.id==='newModal')closeNew()">
   <div class="modal">
@@ -347,29 +397,11 @@ nav{background:var(--wh);border-bottom:1.5px solid var(--br);padding:0 24px;heig
   </div>
 </div>
 
-<!-- Candidate picker -->
-<div class="cand-overlay" id="candOverlay">
-  <div class="cand-box">
-    <h3>📍 場所を選択してください</h3>
-    <div class="cand-sub" id="candSub"></div>
-    <div class="cand-list" id="candList"></div>
-    <!-- 「スポット名が合わない」ときの入力名で登録バナー -->
-    <div id="candNameBanner" style="display:none;margin-top:12px;padding:10px 12px;background:var(--al);border-radius:var(--r0);border:1px solid #f0d08a;font-size:12px;color:#7a5500;display:flex;align-items:center;gap:8px">
-      <span>💡 スポット名が違う場合は</span>
-      <button class="bsec" style="font-size:12px;padding:4px 10px;border-color:#d4a843;color:#7a5500" onclick="closeCandPicker('useInputName')">「<span id="candInputName"></span>」の名前で登録</button>
-    </div>
-    <div class="cand-acts">
-      <button class="bsec" onclick="closeCandPicker(false)">キャンセル</button>
-      <button class="bok" id="candOkBtn" onclick="closeCandPicker(true)">この場所に決定</button>
-    </div>
-  </div>
-</div>
-
-<!-- Edit spot modal – includes address re-geocode -->
+<!-- Edit spot modal -->
 <div class="overlay" id="editModal" onclick="if(event.target.id==='editModal')closeEdit()">
   <div class="modal">
     <h3>✏️ スポットを編集</h3>
-    <div class="mf"><label>スポット名</label><input id="eName" placeholder="スポット名"></div>
+    <div class="mf"><label>スポット名</label><input id="eName"></div>
     <div class="mf">
       <label>住所・地名（変更すると座標を再取得します）</label>
       <input id="eAddr" placeholder="例：京都市北区金閣寺町1">
@@ -387,24 +419,184 @@ nav{background:var(--wh);border-bottom:1.5px solid var(--br);padding:0 24px;heig
   </div>
 </div>
 
+<input type="file" id="fileInput" accept=".json" style="display:none" onchange="loadFile(event)">
+
 <script>
-/* ── constants ── */
-// OSRM: driving エンドポイントのみ使用（各手段は速度係数で計算）
-const OSRM_DRIVING = 'https://router.project-osrm.org/route/v1/driving';
+/* ═══════════════════════════════════════
+   AUTH — ブラウザ内完結のメール+パスワード認証
+   ユーザーデータ: localStorage['tabimemo_users'] に保存
+   パスワード: SHA-256ハッシュで保存（平文なし）
+   各ユーザーのデータ: localStorage['tabimemo_data_<uid>'] に保存
+   デモモード: uid='demo'、データはsessionStorageのみ（タブを閉じると消える）
+═══════════════════════════════════════ */
+
+let currentUser = null; // { uid, email, name, isDemo }
+
+/* ── simple SHA-256 hash via Web Crypto ── */
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+/* ── user store ── */
+function getUsers() {
+  try { return JSON.parse(localStorage.getItem('tabimemo_users')||'{}'); } catch { return {}; }
+}
+function saveUsers(u) {
+  try { localStorage.setItem('tabimemo_users', JSON.stringify(u)); } catch {}
+}
+
+/* ── auth tab switch ── */
+function switchAuthTab(tab) {
+  const isLogin = tab === 'login';
+  document.getElementById('tabLogin').classList.toggle('active', isLogin);
+  document.getElementById('tabSignup').classList.toggle('active', !isLogin);
+  document.getElementById('signupNameWrap').style.display = isLogin ? 'none' : 'block';
+  document.getElementById('authBtn').textContent = isLogin ? 'ログイン' : '新規登録';
+  document.getElementById('authErr').style.display = 'none';
+  document.getElementById('authPass').autocomplete = isLogin ? 'current-password' : 'new-password';
+}
+
+/* ── do auth ── */
+async function doAuth() {
+  const isLogin = document.getElementById('tabLogin').classList.contains('active');
+  const email = document.getElementById('authEmail').value.trim().toLowerCase();
+  const pass  = document.getElementById('authPass').value;
+  const name  = document.getElementById('authName').value.trim();
+  const errEl = document.getElementById('authErr');
+  errEl.style.display = 'none';
+
+  if (!email || !pass) { showAuthErr('メールアドレスとパスワードを入力してください'); return; }
+  if (!email.includes('@')) { showAuthErr('メールアドレスの形式が正しくありません'); return; }
+  if (pass.length < 6) { showAuthErr('パスワードは6文字以上で入力してください'); return; }
+
+  const hash = await sha256(pass);
+  const users = getUsers();
+
+  if (isLogin) {
+    const user = Object.values(users).find(u => u.email === email);
+    if (!user || user.passHash !== hash) { showAuthErr('メールアドレスまたはパスワードが正しくありません'); return; }
+    loginAs(user);
+  } else {
+    if (!name) { showAuthErr('ニックネームを入力してください'); return; }
+    if (Object.values(users).find(u => u.email === email)) { showAuthErr('このメールアドレスはすでに登録されています'); return; }
+    const uid = 'u_' + Date.now().toString(36);
+    const user = { uid, email, name, passHash: hash };
+    users[uid] = user;
+    saveUsers(users);
+    loginAs(user);
+  }
+}
+
+function showAuthErr(msg) {
+  const el = document.getElementById('authErr');
+  el.textContent = msg; el.style.display = 'block';
+}
+
+function loginAs(user) {
+  currentUser = { uid: user.uid, email: user.email, name: user.name, isDemo: false };
+  try { localStorage.setItem('tabimemo_session', JSON.stringify(currentUser)); } catch {}
+  loadAll(); renderNav(); goHome();
+  showScreen('homeScreen');
+}
+
+function doDemo() {
+  currentUser = { uid: 'demo', email: '', name: 'デモユーザー', isDemo: true };
+  loadAll(); renderNav(); goHome();
+  showScreen('homeScreen');
+}
+
+function doLogout() {
+  if (currentUser?.isDemo) {
+    try { sessionStorage.removeItem('tabimemo_demo'); } catch {}
+  }
+  try { localStorage.removeItem('tabimemo_session'); } catch {}
+  currentUser = null;
+  trips = []; cache = {}; curId = null; curDay = 0;
+  renderNav();
+  showScreen('authScreen');
+}
+
+/* ── restore session ── */
+function restoreSession() {
+  try {
+    const s = localStorage.getItem('tabimemo_session');
+    if (!s) return false;
+    const sess = JSON.parse(s);
+    // verify user still exists
+    if (!sess.isDemo) {
+      const users = getUsers();
+      const user = users[sess.uid];
+      if (!user) { localStorage.removeItem('tabimemo_session'); return false; }
+      currentUser = { uid: user.uid, email: user.email, name: user.name, isDemo: false };
+    } else {
+      currentUser = sess;
+    }
+    return true;
+  } catch { return false; }
+}
+
+/* ── nav ── */
+function renderNav() {
+  const el = document.getElementById('navR');
+  if (!currentUser) {
+    el.innerHTML = '';
+    return;
+  }
+  if (currentUser.isDemo) {
+    el.innerHTML = `
+      <span class="demo-badge">デモ中</span>
+      <button class="btn-logout" onclick="doLogout()">終了</button>`;
+  } else {
+    el.innerHTML = `
+      <span class="nav-user">こんにちは、<strong>${currentUser.name}</strong>さん</span>
+      <button class="btn-logout" onclick="doLogout()">ログアウト</button>`;
+  }
+}
+
+/* ═══════════════════════════════════════
+   DATA PERSISTENCE — ユーザーごとにキーを分ける
+═══════════════════════════════════════ */
+let trips=[], cache={}, curId=null, curDay=0;
+
+function storageKey() {
+  if (!currentUser) return null;
+  return currentUser.isDemo ? null : `tabimemo_data_${currentUser.uid}`;
+}
+
+function saveAll() {
+  if (!currentUser) return;
+  const data = JSON.stringify({ trips, cache });
+  try {
+    if (currentUser.isDemo) {
+      sessionStorage.setItem('tabimemo_demo', data);
+    } else {
+      localStorage.setItem(storageKey(), data);
+    }
+  } catch {}
+}
+
+function loadAll() {
+  if (!currentUser) return;
+  try {
+    const raw = currentUser.isDemo
+      ? sessionStorage.getItem('tabimemo_demo')
+      : localStorage.getItem(storageKey());
+    if (!raw) return;
+    const d = JSON.parse(raw);
+    trips = d.trips || []; cache = d.cache || {};
+  } catch {}
+}
+
+/* ═══════════════════════════════════════
+   UTILS
+═══════════════════════════════════════ */
 const EMOJIS=['✈️','🗺️','🏝️','🏔️','🌸','🎌','🗼','🏯','🌅','🌊','🍜','🍣','🎡','🎭','🚂','🚢','🏕️','🌴','🦁','🐧'];
 const COLORS=['#FF6B6B','#FFB347','#6BCB77','#4D96FF','#9B8FFF','#FF9EC4','#4DC6C6','#E8A87C'];
 const MICON={car:'🚗',walk:'🚶',bike:'🚲',train:'🚃'};
+const OSRM_DRIVING='https://router.project-osrm.org/route/v1/driving';
+const SPEED_KMH={car:30,walk:4.5,bike:14};
 
-/* ── state ── */
-let trips=[],cache={},curId=null,curDay=0,selEmoji=EMOJIS[0],editIdx=-1;
-// editOrigAddr stores the addr at time modal opened, to detect changes
-let editOrigAddr='';
-
-/* ── persist ── */
-function saveAll(){try{localStorage.setItem('tabimemo_v4',JSON.stringify({trips,cache}));}catch{}}
-function loadAll(){try{const r=localStorage.getItem('tabimemo_v4');if(!r)return;const d=JSON.parse(r);trips=d.trips||[];cache=d.cache||{};}catch{}}
-
-/* ── utils ── */
 function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2)}
 function fmtMin(m){m=Math.round(m||0);if(!m)return'0分';return m<60?m+'分':Math.floor(m/60)+'時間'+(m%60?m%60+'分':'')}
 function addMin(t,m){m=Math.round(m||0);let[h,mi]=(t||'09:00').split(':').map(Number);mi+=m;h+=Math.floor(mi/60);mi%=60;return String(h).padStart(2,'0')+':'+String(mi).padStart(2,'0')}
@@ -412,322 +604,152 @@ function trip(){return trips.find(t=>t.id===curId)}
 function day(){return trip()&&trip().days[curDay]}
 function spots(){return day()?day().spots:[]}
 
-/* ── recalc arrivals ──
-   spot[0].arrival = user-set (null until first spot arrival is set in edit modal)
-   spot[i].arrival = spot[i-1].arrival + spot[i-1].stay + seg[i-1].mins
-   If any spot has null arrival, downstream spots are also null.
-*/
+function distKm2(a,b,c,d){const R=6371,dL=(c-a)*Math.PI/180,dO=(d-b)*Math.PI/180,x=Math.sin(dL/2)**2+Math.cos(a*Math.PI/180)*Math.cos(c*Math.PI/180)*Math.sin(dO/2)**2;return R*2*Math.atan2(Math.sqrt(x),Math.sqrt(1-x))}
+function distKm(a,b,c,d){return distKm2(a,b,c,d)}
+
+function estimateTrainMins(sk){
+  const d=sk*1.5;
+  let speed,transfer;
+  if(sk<5){speed=25;transfer=5}else if(sk<20){speed=40;transfer=10}else if(sk<50){speed=55;transfer=15}else{speed=80;transfer=20}
+  return Math.round((d/speed)*60)+transfer;
+}
+
+async function fetchTravel(a,b,mode){
+  const k=`${a.lat.toFixed(4)},${a.lon.toFixed(4)}|${b.lat.toFixed(4)},${b.lon.toFixed(4)}|${mode}`;
+  if(cache[k]!=null)return cache[k];
+  if(mode==='train'){const m=estimateTrainMins(distKm2(a.lat,a.lon,b.lat,b.lon));cache[k]=m;return m}
+  const speed=SPEED_KMH[mode]||30;
+  try{
+    const r=await fetch(`${OSRM_DRIVING}/${a.lon},${a.lat};${b.lon},${b.lat}?overview=false`);
+    const d=await r.json();if(d.code!=='Ok')throw 0;
+    const dk=d.routes[0].distance/1000;
+    const m=mode==='car'?Math.round(d.routes[0].duration/60):Math.round((dk/speed)*60);
+    cache[k]=m;return m;
+  }catch{
+    const m=Math.round((distKm2(a.lat,a.lon,b.lat,b.lon)*1.35/speed)*60);
+    cache[k]=m;return m;
+  }
+}
+
 function recalcArrivals(){
   const sp=spots();
   for(let i=1;i<sp.length;i++){
-    const p=sp[i-1];
-    const base=p.arrival||p.startTime;
-    if(!base){ sp[i].arrival=null; continue; }
-    const travel=p.seg?p.seg.mins||0:0;
-    sp[i].arrival=addMin(base,(p.stay||0)+travel);
+    const p=sp[i-1];const base=p.arrival||p.startTime;
+    if(!base){sp[i].arrival=null;continue}
+    sp[i].arrival=addMin(base,(p.stay||0)+(p.seg?p.seg.mins||0:0));
   }
-}
-
-/* ── auto travel time via OSRM + 電車概算 ── */
-/*
-  OSRMのデモAPIは driving プロファイルのみ信頼できる。
-  → 車の実際の道路距離(m)を取得し、各手段の現実的な速度で時間を算出する。
-
-  速度の根拠（日本の都市部平均）:
-    car  : 30 km/h  (渋滞・信号考慮)
-    walk : 4.5 km/h (成人徒歩平均)
-    bike : 14 km/h  (ママチャリ〜スポーツ中間)
-
-  電車の概算ロジック:
-    直線距離 × 迂回係数 ÷ 表定速度 + 乗換・待ち時間
-    - 迂回係数: 1.5（路線が直線でないため）
-    - 表定速度: 距離帯によって変化
-        〜 5km : 25 km/h（市街地の各停・地下鉄）
-        〜20km : 40 km/h（快速・近郊線）
-        〜50km : 55 km/h（特急・新快速）
-        50km〜 : 80 km/h（新幹線・高速特急）
-    - 乗換・待ち時間の加算:
-        〜 5km :  5分（同路線乗り換えなし想定）
-        〜20km : 10分（1回乗り換え）
-        〜50km : 15分（1〜2回乗り換え）
-        50km〜 : 20分（新幹線含む乗り換え）
-    これで「渋谷→新宿」約5分、「東京→大阪」約150分など
-    実態に近い概算が得られる。
-*/
-const SPEED_KMH = { car: 30, walk: 4.5, bike: 14 };
-
-function estimateTrainMins(straightKm) {
-  const dist = straightKm * 1.5; // 迂回係数
-  let speed, transfer;
-  if (straightKm < 5)       { speed = 25; transfer = 5;  }
-  else if (straightKm < 20) { speed = 40; transfer = 10; }
-  else if (straightKm < 50) { speed = 55; transfer = 15; }
-  else                      { speed = 80; transfer = 20; }
-  return Math.round((dist / speed) * 60) + transfer;
-}
-
-async function fetchTravel(a, b, mode) {
-  const k = `${a.lat.toFixed(4)},${a.lon.toFixed(4)}|${b.lat.toFixed(4)},${b.lon.toFixed(4)}|${mode}`;
-  if (cache[k] != null) return cache[k];
-
-  // 電車: OSRM不使用。直線距離ベースの概算
-  if (mode === 'train') {
-    const straight = distKm2(a.lat, a.lon, b.lat, b.lon);
-    const mins = estimateTrainMins(straight);
-    cache[k] = mins;
-    return mins;
-  }
-
-  const speed = SPEED_KMH[mode] || 30;
-
-  try {
-    // 常にdrivingで道路距離を取得（最も信頼性が高い）
-    const r = await fetch(
-      `${OSRM_DRIVING}/${a.lon},${a.lat};${b.lon},${b.lat}?overview=false`
-    );
-    const d = await r.json();
-    if (d.code !== 'Ok') throw new Error('no route');
-
-    const distKm = d.routes[0].distance / 1000;
-
-    let mins;
-    if (mode === 'car') {
-      // 車: OSRM の所要時間そのまま使う（信号・渋滞込み）
-      mins = Math.round(d.routes[0].duration / 60);
-    } else {
-      // 徒歩・自転車: 道路距離 ÷ 速度
-      mins = Math.round((distKm / speed) * 60);
-    }
-
-    cache[k] = mins;
-    return mins;
-  } catch {
-    // フォールバック: 直線距離 × 1.35（都市迂回係数）
-    const straight = distKm2(a.lat, a.lon, b.lat, b.lon);
-    const mins = Math.round((straight * 1.35 / speed) * 60);
-    cache[k] = mins;
-    return mins;
-  }
-}
-
-// Haversine 直線距離 (km)
-function distKm2(lat1, lon1, lat2, lon2) {
-  const R = 6371, dLat = (lat2-lat1)*Math.PI/180, dLon = (lon2-lon1)*Math.PI/180;
-  const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
-  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
 }
 
 async function autoCalcSeg(i){
   const sp=spots();if(i>=sp.length-1)return;
-  const seg=sp[i].seg||{mode:'car',mins:0};
-  seg.loading=true;
-  sp[i].seg=seg;
-  renderTl();
+  const seg=sp[i].seg||{mode:'car',mins:0,auto:false};
+  seg.loading=true;sp[i].seg=seg;renderTl();
   const m=await fetchTravel(sp[i],sp[i+1],seg.mode||'car');
   seg.loading=false;
   if(m!=null){seg.mins=m;seg.auto=true;}
   recalcArrivals();renderTl();saveAll();
 }
 
-/* ── postal code normalizer ── */
+/* ═══════════════════════════════════════
+   GEOCODE
+═══════════════════════════════════════ */
 function normalizeQuery(q){
-  // detect Japanese postal code: 〒123-4567 or 123-4567 or 1234567
   const m=q.replace(/〒/g,'').replace(/\s/g,'').match(/^(\d{3})-?(\d{4})$/);
-  if(m) return m[1]+'-'+m[2]+', Japan';
+  if(m)return m[1]+'-'+m[2]+', Japan';
   return q;
 }
-
-/* ── geocode: returns up to 6 candidates, biased to near existing spots ── */
-async function geocodeCandidates(q, biasLat, biasLon){
+async function geocodeCandidates(q,biasLat,biasLon){
   q=normalizeQuery(q);
   try{
-    // viewbox bias: ±0.5° (~55km) around reference point if available
-    const vb = biasLat!=null
-      ? `&viewbox=${biasLon-.5},${biasLat+.5},${biasLon+.5},${biasLat-.5}&bounded=0`
-      : '';
-    const url=`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&limit=6&addressdetails=1${vb}`;
-    const r=await fetch(url,{headers:{'Accept-Language':'ja'}});
-    const d=await r.json();
-    if(!d.length) return [];
-    return d.map(item=>({
-      lat:+item.lat, lon:+item.lon,
-      display: item.display_name,
-      name: item.namedetails?.name || item.name || item.display_name.split(',')[0],
-      type: item.type,
-      class: item.class,
-      addr: item.address
-    }));
+    const vb=biasLat!=null?`&viewbox=${biasLon-.5},${biasLat+.5},${biasLon+.5},${biasLat-.5}&bounded=0`:'';
+    const r=await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(q)}&format=json&limit=6&addressdetails=1${vb}`,{headers:{'Accept-Language':'ja'}});
+    const d=await r.json();if(!d.length)return[];
+    return d.map(x=>({lat:+x.lat,lon:+x.lon,display:x.display_name,name:x.namedetails?.name||x.name||x.display_name.split(',')[0],type:x.type,class:x.class,addr:x.address}));
   }catch{return[]}
 }
+function shortAddr(c){if(!c.addr)return c.display.split(',').slice(0,3).join(', ');const a=c.addr;return[a.amenity||a.shop||a.tourism||a.building,a.road,a.suburb||a.neighbourhood,a.city||a.town||a.village,a.country].filter(Boolean).slice(0,4).join(', ')}
+function candIcon(c){const t=c.class+'/'+c.type;if(/restaurant|cafe|fast_food|food/.test(t))return'🍽️';if(/bar|pub/.test(t))return'🍺';if(/hotel|hostel|guest_house/.test(t))return'🏨';if(/museum/.test(t))return'🏛️';if(/attraction|viewpoint/.test(t))return'⭐';if(/shrine|place_of_worship/.test(t))return'⛩️';if(/park|garden/.test(t))return'🌳';if(/shop/.test(c.class))return'🛍️';if(/railway|bus_stop/.test(t))return'🚉';if(/airport/.test(t))return'✈️';return'📍'}
 
-// km distance between two lat/lon points (Haversine)
-function distKm(lat1,lon1,lat2,lon2){
-  const R=6371,dLat=(lat2-lat1)*Math.PI/180,dLon=(lon2-lon1)*Math.PI/180;
-  const a=Math.sin(dLat/2)**2+Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLon/2)**2;
-  return R*2*Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
-}
-
-// returns a short readable label from Nominatim address object
-function shortAddr(c){
-  if(!c.addr) return c.display.split(',').slice(0,3).join(', ');
-  const a=c.addr;
-  const parts=[a.amenity||a.shop||a.tourism||a.building,a.road,a.suburb||a.neighbourhood,a.city||a.town||a.village,a.country].filter(Boolean);
-  return parts.slice(0,4).join(', ');
-}
-
-// icon by Nominatim class/type
-function candIcon(c){
-  const t=c.class+'/'+c.type;
-  if(/amenity\/restaurant|amenity\/cafe|amenity\/fast_food|amenity\/food/.test(t)) return '🍽️';
-  if(/amenity\/bar|amenity\/pub/.test(t)) return '🍺';
-  if(/tourism\/hotel|tourism\/hostel|tourism\/guest_house/.test(t)) return '🏨';
-  if(/tourism\/museum/.test(t)) return '🏛️';
-  if(/tourism\/attraction|tourism\/viewpoint/.test(t)) return '⭐';
-  if(/amenity\/shrine|amenity\/place_of_worship/.test(t)) return '⛩️';
-  if(/leisure\/park|leisure\/garden/.test(t)) return '🌳';
-  if(/shop/.test(c.class)) return '🛍️';
-  if(/railway|highway\/bus_stop/.test(t)) return '🚉';
-  if(/airport/.test(t)) return '✈️';
-  return '📍';
-}
-
-/* ── candidate picker state ── */
-let candResolve=null, selCandIdx=0, candItems=[], candInputName='';
-
-function showCandPicker(candidates, biasLat, biasLon, query, inputName){
-  candItems=candidates; selCandIdx=0; candInputName=inputName||'';
-  document.getElementById('candSub').textContent=
-    `「${query}」の検索結果 ${candidates.length}件 — 正しい場所を選んでください`;
+let candResolve=null,selCandIdx=0,candItems=[],candInputName='';
+function showCandPicker(candidates,biasLat,biasLon,query,inputName){
+  candItems=candidates;selCandIdx=0;candInputName=inputName||'';
+  document.getElementById('candSub').textContent=`「${query}」の検索結果 ${candidates.length}件 — 正しい場所を選んでください`;
   document.getElementById('candList').innerHTML=candidates.map((c,i)=>{
     const dist=biasLat!=null?distKm(biasLat,biasLon,c.lat,c.lon):null;
-    const distTxt=dist!=null?(dist<1?(dist*1000).toFixed(0)+'m先':(dist).toFixed(1)+'km先'):'';
-    return`<div class="cand-item ${i===0?'sel':''}" id="cand-${i}" onclick="pickCand(${i})">
-      <div class="cand-icon">${candIcon(c)}</div>
-      <div class="cand-info">
-        <div class="cand-name">${c.name||c.display.split(',')[0]}</div>
-        <div class="cand-addr">${shortAddr(c)}</div>
-      </div>
-      ${distTxt?`<div class="cand-dist">${distTxt}</div>`:''}
-    </div>`;
+    const dt=dist!=null?(dist<1?(dist*1000).toFixed(0)+'m先':(dist).toFixed(1)+'km先'):'';
+    return`<div class="cand-item ${i===0?'sel':''}" id="cand-${i}" onclick="pickCand(${i})"><div class="cand-icon">${candIcon(c)}</div><div class="cand-info"><div class="cand-name">${c.name||c.display.split(',')[0]}</div><div class="cand-addr">${shortAddr(c)}</div></div>${dt?`<div class="cand-dist">${dt}</div>`:''}</div>`;
   }).join('');
-
-  // 入力名がある場合のみバナーを表示
-  const banner = document.getElementById('candNameBanner');
-  if(candInputName){
-    document.getElementById('candInputName').textContent = candInputName;
-    banner.style.display = 'flex';
-  } else {
-    banner.style.display = 'none';
-  }
-
+  const banner=document.getElementById('candNameBanner');
+  if(candInputName){document.getElementById('candInputName').textContent=candInputName;banner.style.display='flex';}
+  else{banner.style.display='none';}
   document.getElementById('candOverlay').classList.add('open');
-  return new Promise(res=>{ candResolve=res; });
+  return new Promise(res=>{candResolve=res;});
 }
-
-function pickCand(i){
-  selCandIdx=i;
-  document.querySelectorAll('.cand-item').forEach((el,j)=>el.classList.toggle('sel',j===i));
-}
-
+function pickCand(i){selCandIdx=i;document.querySelectorAll('.cand-item').forEach((el,j)=>el.classList.toggle('sel',j===i))}
 function closeCandPicker(result){
   document.getElementById('candOverlay').classList.remove('open');
   if(candResolve){
-    if(result===true){
-      // 候補の場所で決定。名前は入力名を使うかどうかは呼び出し側が判断
-      const chosen = {...candItems[selCandIdx]};
-      candResolve(chosen);
-    } else if(result==='useInputName'){
-      // 座標は選択中の候補、名前は入力名で上書き
-      const chosen = {...candItems[selCandIdx], overrideName: candInputName};
-      candResolve(chosen);
-    } else {
-      candResolve(null);
-    }
+    if(result===true)candResolve({...candItems[selCandIdx]});
+    else if(result==='useInputName')candResolve({...candItems[selCandIdx],overrideName:candInputName});
+    else candResolve(null);
   }
   candResolve=null;
 }
-
-/* ── unified geocode with picker ── */
-// inputName: スポット名フォームに入力された名前（候補名と違う場合に使う）
-async function geocodeWithPicker(query, biasLat, biasLon, statusEl, inputName){
+async function geocodeWithPicker(query,biasLat,biasLon,statusEl,inputName){
   if(statusEl){statusEl.className='gmsg ld';statusEl.style.display='block';statusEl.textContent='📍 場所を検索中…';}
-  const candidates = await geocodeCandidates(query, biasLat, biasLon);
-  if(!candidates.length){
-    if(statusEl){statusEl.className='gmsg err';statusEl.textContent='⚠ 場所が見つかりません。住所をより詳しく入力してください。';}
-    return null;
-  }
-  if(candidates.length===1){
-    const c = candidates[0];
-    const candName = c.name || c.display.split(',')[0];
-    // 入力名と候補名が明らかに違う場合はピッカーを出して確認させる
-    const namesDiffer = inputName && inputName !== candName &&
-      !candName.toLowerCase().includes(inputName.toLowerCase()) &&
-      !inputName.toLowerCase().includes(candName.toLowerCase());
-    if(!namesDiffer){
-      if(statusEl){statusEl.className='gmsg ok';statusEl.textContent='✓ '+shortAddr(c);}
-      return c;
-    }
-    // 名前が違う → ピッカーで確認
-    if(statusEl) statusEl.style.display='none';
-    const chosen = await showCandPicker(candidates, biasLat, biasLon, query, inputName);
-    if(!chosen){
-      if(statusEl){statusEl.className='gmsg err';statusEl.style.display='block';statusEl.textContent='⚠ 場所の選択がキャンセルされました。';}
-      return null;
-    }
+  const cands=await geocodeCandidates(query,biasLat,biasLon);
+  if(!cands.length){if(statusEl){statusEl.className='gmsg err';statusEl.textContent='⚠ 場所が見つかりません。住所をより詳しく入力してください。';}return null;}
+  if(cands.length===1){
+    const c=cands[0];const cn=c.name||c.display.split(',')[0];
+    const diff=inputName&&inputName!==cn&&!cn.toLowerCase().includes(inputName.toLowerCase())&&!inputName.toLowerCase().includes(cn.toLowerCase());
+    if(!diff){if(statusEl){statusEl.className='gmsg ok';statusEl.textContent='✓ '+shortAddr(c);}return c;}
+    if(statusEl)statusEl.style.display='none';
+    const chosen=await showCandPicker(cands,biasLat,biasLon,query,inputName);
+    if(!chosen){if(statusEl){statusEl.className='gmsg err';statusEl.style.display='block';statusEl.textContent='⚠ 場所の選択がキャンセルされました。';}return null;}
     if(statusEl){statusEl.className='gmsg ok';statusEl.style.display='block';statusEl.textContent='✓ '+shortAddr(chosen);}
     return chosen;
   }
-  // Multiple: show picker
-  if(statusEl) statusEl.style.display='none';
-  const chosen = await showCandPicker(candidates, biasLat, biasLon, query, inputName);
-  if(!chosen){
-    if(statusEl){statusEl.className='gmsg err';statusEl.style.display='block';statusEl.textContent='⚠ 場所の選択がキャンセルされました。';}
-    return null;
-  }
+  if(statusEl)statusEl.style.display='none';
+  const chosen=await showCandPicker(cands,biasLat,biasLon,query,inputName);
+  if(!chosen){if(statusEl){statusEl.className='gmsg err';statusEl.style.display='block';statusEl.textContent='⚠ 場所の選択がキャンセルされました。';}return null;}
   if(statusEl){statusEl.className='gmsg ok';statusEl.style.display='block';statusEl.textContent='✓ '+shortAddr(chosen);}
   return chosen;
 }
-
-// get bias point: last registered spot (or any existing spot centroid)
 function getBiasPoint(){
-  const sp=spots();
-  if(sp.length) return{lat:sp[sp.length-1].lat, lon:sp[sp.length-1].lon};
-  // fallback: centroid of all spots across all days
+  const sp=spots();if(sp.length)return{lat:sp[sp.length-1].lat,lon:sp[sp.length-1].lon};
   const all=trip()?.days.flatMap(d=>d.spots)||[];
-  if(all.length){
-    return{lat:all.reduce((a,s)=>a+s.lat,0)/all.length, lon:all.reduce((a,s)=>a+s.lon,0)/all.length};
-  }
+  if(all.length)return{lat:all.reduce((a,s)=>a+s.lat,0)/all.length,lon:all.reduce((a,s)=>a+s.lon,0)/all.length};
   return{lat:null,lon:null};
 }
 
-/* ── screens ── */
+/* ═══════════════════════════════════════
+   SCREENS
+═══════════════════════════════════════ */
 function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
 function goHome(){curId=null;showScreen('homeScreen');renderHome()}
 
-/* ── home ── */
+/* ═══════════════════════════════════════
+   HOME
+═══════════════════════════════════════ */
 function renderHome(){
+  // demo banner
+  const db=document.getElementById('demoBanner');
+  if(currentUser?.isDemo){
+    db.innerHTML=`<div class="demo-banner"><p>👀 <strong>デモモード</strong>でお試し中です。データはタブを閉じると消えます。</p><button class="btn-signup-now" onclick="doLogout()">登録してデータを保存する</button></div>`;
+  } else { db.innerHTML=''; }
+
   const g=document.getElementById('tgrid');
   if(!trips.length){g.innerHTML='<div class="empty-trips"><div class="big">✈️</div><p>まだ旅行プランがありません</p><p style="margin-top:6px;font-size:12px">「新しい旅行」から始めましょう！</p></div>';return}
   g.innerHTML=trips.map(t=>{
     const tot=t.days.reduce((a,d)=>a+d.spots.length,0);
     const dates=t.days.map(d=>d.date).filter(Boolean).sort();
     const range=!dates.length?`${t.days.length}日間`:dates.length===1?dates[0].replace(/-/g,'/'):dates[0].replace(/-/g,'/')+'〜'+dates[dates.length-1].replace(/-/g,'/');
-    return`<div class="tcard" onclick="openTrip('${t.id}')">
-      <div class="tc-accent" style="background:${t.color}"></div>
-      <div class="tc-body">
-        <div class="tc-emoji">${t.emoji}</div>
-        <div class="tc-name">${t.name}</div>
-        <div class="tc-meta"><span>📅 ${range}</span><span>📍 ${tot}スポット・${t.days.length}日間</span></div>
-      </div>
-      <div class="tc-acts">
-        <button class="tcbtn" onclick="event.stopPropagation();exportTrip('${t.id}')" title="保存">💾</button>
-        <button class="tcbtn" onclick="event.stopPropagation();delTrip('${t.id}')" title="削除">🗑</button>
-      </div>
-    </div>`;
+    return`<div class="tcard" onclick="openTrip('${t.id}')"><div class="tc-accent" style="background:${t.color}"></div><div class="tc-body"><div class="tc-emoji">${t.emoji}</div><div class="tc-name">${t.name}</div><div class="tc-meta"><span>📅 ${range}</span><span>📍 ${tot}スポット・${t.days.length}日間</span></div></div><div class="tc-acts"><button class="tcbtn" onclick="event.stopPropagation();exportTrip('${t.id}')" title="保存">💾</button><button class="tcbtn" onclick="event.stopPropagation();delTrip('${t.id}')" title="削除">🗑</button></div></div>`;
   }).join('');
 }
 
 /* ── new trip modal ── */
+let selEmoji=EMOJIS[0];
 function openNewModal(){
   selEmoji=EMOJIS[0];
   document.getElementById('ntName').value='';
@@ -744,12 +766,7 @@ function createTrip(){
 }
 
 /* ── open/del trip ── */
-function openTrip(id){
-  curId=id;curDay=0;showScreen('planScreen');
-  document.getElementById('tripInp').value=trip().name;
-  document.getElementById('dayDate').value=trip().days[0].date||'';
-  renderPlan();
-}
+function openTrip(id){curId=id;curDay=0;showScreen('planScreen');document.getElementById('tripInp').value=trip().name;document.getElementById('dayDate').value=trip().days[0].date||'';renderPlan()}
 function delTrip(id){if(!confirm('この旅行を削除しますか？'))return;trips=trips.filter(t=>t.id!==id);saveAll();renderHome()}
 function delCurTrip(){if(!confirm('この旅行を削除しますか？'))return;trips=trips.filter(t=>t.id!==curId);saveAll();goHome()}
 
@@ -764,21 +781,22 @@ function loadFile(e){
     try{
       const d=JSON.parse(ev.target.result);
       if(d.trip){d.trip.id=uid();trips.unshift(d.trip);if(d.cache)Object.assign(cache,d.cache);saveAll();renderHome();}
-      else if(d.state&&d.state.days){trips.unshift({id:uid(),name:d.state.tripName||'読み込んだ旅行',emoji:'✈️',color:COLORS[0],createdAt:Date.now(),days:d.state.days});if(d.cache)Object.assign(cache,d.cache);saveAll();renderHome();}
+      else if(d.state&&d.state.days){trips.unshift({id:uid(),name:d.state.tripName||'読み込んだ旅行',emoji:'✈️',color:COLORS[0],createdAt:Date.now(),days:d.state.days});saveAll();renderHome();}
       else alert('対応していないファイル形式です');
     }catch{alert('読み込みに失敗しました')}
   };
   r.readAsText(f);e.target.value='';
 }
 
-/* ── days ── */
+/* ═══════════════════════════════════════
+   PLAN
+═══════════════════════════════════════ */
 function switchDay(i){curDay=i;document.getElementById('dayDate').value=day().date||'';renderPlan()}
 function addDay(){const n=trip().days.length+1;trip().days.push({id:uid(),label:`${n}日目`,date:'',spots:[]});curDay=trip().days.length-1;document.getElementById('dayDate').value='';saveCur();renderPlan()}
 function delDay(){if(trip().days.length===1){alert('最後の日程は削除できません');return}if(!confirm('この日程を削除しますか？'))return;trip().days.splice(curDay,1);curDay=Math.max(0,curDay-1);document.getElementById('dayDate').value=day().date||'';saveCur();renderPlan()}
 function updDate(){day().date=document.getElementById('dayDate').value;saveCur()}
 function saveCur(){if(trip())trip().name=document.getElementById('tripInp').value||trip().name;saveAll()}
 
-/* ── add spot ── */
 async function addSpot(){
   const name=document.getElementById('fName').value.trim();
   const addr=document.getElementById('fAddr').value.trim();
@@ -788,42 +806,30 @@ async function addSpot(){
   if(!name){alert('スポット名を入力してください');return}
   const msg=document.getElementById('gmsg');
   const bias=getBiasPoint();
-  const geo=await geocodeWithPicker(addr||name, bias.lat, bias.lon, msg, name);
-  if(!geo) return;
-  // overrideName: ユーザーが「入力名で登録」を選んだ場合はそちらを優先
-  const spotName = geo.overrideName || name;
-  const sp=spots();
-  const prev=sp[sp.length-1];
-  // arrival: calculated from previous spot if exists, otherwise null (set manually later)
-  const arrival=prev
-    ? addMin(prev.arrival||prev.startTime,(prev.stay||0)+(prev.seg?prev.seg.mins||0:0))
-    : null;
-  sp.push({name:spotName,lat:geo.lat,lon:geo.lon,addr:shortAddr(geo),startTime:null,arrival,stay,note,
-    seg:{mode,mins:0,auto:false}
-  });
-  document.getElementById('fName').value='';
-  document.getElementById('fAddr').value='';
-  document.getElementById('fNote').value='';
+  const geo=await geocodeWithPicker(addr||name,bias.lat,bias.lon,msg,name);
+  if(!geo)return;
+  const spotName=geo.overrideName||name;
+  const sp=spots();const prev=sp[sp.length-1];
+  const arrival=prev?addMin(prev.arrival||prev.startTime,(prev.stay||0)+(prev.seg?prev.seg.mins||0:0)):null;
+  sp.push({name:spotName,lat:geo.lat,lon:geo.lon,addr:shortAddr(geo),startTime:null,arrival,stay,note,seg:{mode,mins:0,auto:false}});
+  document.getElementById('fName').value='';document.getElementById('fAddr').value='';document.getElementById('fNote').value='';
   renderPlan();
-  if(sp.length>1) autoCalcSeg(sp.length-2);
+  if(sp.length>1)autoCalcSeg(sp.length-2);
   saveAll();
   setTimeout(()=>{msg.style.display='none'},4000);
 }
 
-/* ── remove spot ── */
 function removeSpot(i){if(!confirm('このスポットを削除しますか？'))return;spots().splice(i,1);recalcArrivals();renderPlan();saveAll()}
 
-/* ── edit spot modal ── */
+let editIdx=-1,editOrigAddr='';
 function openEdit(i){
-  editIdx=i;
-  const s=spots()[i];
+  editIdx=i;const s=spots()[i];
   document.getElementById('eName').value=s.name;
-  document.getElementById('eAddr').value=s.addr||'';
-  editOrigAddr=s.addr||'';
-  document.getElementById('eTime').value=s.arrival||s.startTime;
+  document.getElementById('eAddr').value=s.addr||'';editOrigAddr=s.addr||'';
+  document.getElementById('eTime').value=s.arrival||s.startTime||'';
   document.getElementById('eStay').value=s.stay;
   document.getElementById('eNote').value=s.note||'';
-  const eg=document.getElementById('egeo');eg.style.display='none';
+  document.getElementById('egeo').style.display='none';
   document.getElementById('editModal').classList.add('open');
 }
 async function saveEdit(){
@@ -833,85 +839,50 @@ async function saveEdit(){
   const newTime=document.getElementById('eTime').value;
   const newStay=parseInt(document.getElementById('eStay').value)||s.stay;
   const newNote=document.getElementById('eNote').value.trim();
-  const eg=document.getElementById('egeo');
-  const btn=document.getElementById('editSaveBtn');
+  const eg=document.getElementById('egeo');const btn=document.getElementById('editSaveBtn');
   let addrChanged=false;
-
-  if(newAddr && newAddr!==editOrigAddr){
-    btn.disabled=true; btn.textContent='検索中…';
-    // bias: prefer vicinity of neighbouring spots
-    const sp=spots();
-    const refSpot = editIdx>0 ? sp[editIdx-1] : sp[editIdx+1];
-    const bLat=refSpot?refSpot.lat:s.lat, bLon=refSpot?refSpot.lon:s.lon;
-    const geo=await geocodeWithPicker(newAddr, bLat, bLon, eg, newName);
-    btn.disabled=false; btn.textContent='保存';
-    if(!geo) return;
-    s.lat=geo.lat; s.lon=geo.lon; s.addr=shortAddr(geo);
-    // overrideName: ユーザーが「入力名で登録」を選んだ場合はそちらを名前に反映
-    if(geo.overrideName) s.name=geo.overrideName;
-    if(editIdx>0){const prev=sp[editIdx-1];if(prev.seg)prev.seg.auto=false}
-    if(sp[editIdx+1]){if(s.seg)s.seg.auto=false}
+  if(newAddr&&newAddr!==editOrigAddr){
+    btn.disabled=true;btn.textContent='検索中…';
+    const sp=spots();const ref=editIdx>0?sp[editIdx-1]:sp[editIdx+1];
+    const bLat=ref?ref.lat:s.lat,bLon=ref?ref.lon:s.lon;
+    const geo=await geocodeWithPicker(newAddr,bLat,bLon,eg,newName);
+    btn.disabled=false;btn.textContent='保存';
+    if(!geo)return;
+    s.lat=geo.lat;s.lon=geo.lon;s.addr=shortAddr(geo);
+    if(geo.overrideName)s.name=geo.overrideName;
+    if(editIdx>0){const prev=spots()[editIdx-1];if(prev.seg)prev.seg.auto=false}
+    if(spots()[editIdx+1]){if(s.seg)s.seg.auto=false}
     addrChanged=true;
-  } else if(newAddr){ s.addr=newAddr; }
-
-  s.name=newName; s.arrival=newTime; s.stay=newStay; s.note=newNote;
-  if(editIdx===0) s.startTime=newTime;
-  recalcArrivals();
-  closeEdit(); renderPlan(); saveAll();
-  if(addrChanged){
-    if(editIdx>0) autoCalcSeg(editIdx-1);
-    if(spots()[editIdx+1]) autoCalcSeg(editIdx);
-  }
+  }else if(newAddr){s.addr=newAddr;}
+  s.name=newName;s.arrival=newTime||null;s.stay=newStay;s.note=newNote;
+  if(editIdx===0)s.startTime=newTime||null;
+  recalcArrivals();closeEdit();renderPlan();saveAll();
+  if(addrChanged){if(editIdx>0)autoCalcSeg(editIdx-1);if(spots()[editIdx+1])autoCalcSeg(editIdx);}
 }
 function closeEdit(){document.getElementById('editModal').classList.remove('open')}
 
-/* ── segment: mode change ── */
-function segModeChange(i,mode){
-  const sp=spots();sp[i].seg=sp[i].seg||{mode,mins:0,auto:false};
-  sp[i].seg.mode=mode;sp[i].seg.auto=false;
-  renderTl();saveAll();
-}
+function segModeChange(i,mode){const sp=spots();sp[i].seg=sp[i].seg||{mode,mins:0,auto:false};sp[i].seg.mode=mode;sp[i].seg.auto=false;renderTl();saveAll()}
+function segMinsInput(i,val){const sp=spots();sp[i].seg=sp[i].seg||{mode:'car',mins:0,auto:false};sp[i].seg.mins=parseInt(val)||0;sp[i].seg.auto=false;recalcArrivals();renderTl();saveAll()}
+async function segAutoBtn(i){await autoCalcSeg(i)}
 
-/* ── segment: manual minutes input ── */
-function segMinsInput(i,val){
-  const sp=spots();sp[i].seg=sp[i].seg||{mode:'car',mins:0,auto:false};
-  sp[i].seg.mins=parseInt(val)||0;sp[i].seg.auto=false;
-  recalcArrivals();renderTl();saveAll();
-}
-
-/* ── segment: auto button ── */
-async function segAutoBtn(i){
-  await autoCalcSeg(i);
-}
-
-/* ── render plan ── */
+/* ─ render plan ─ */
 function renderPlan(){renderDlist();renderSb();renderStats();renderTl();document.getElementById('dayTitle').textContent=day()?day().label:''}
-
 function renderDlist(){
   const t=trip();if(!t)return;
   document.getElementById('dlist').innerHTML=t.days.map((d,i)=>`
     <button class="dchip ${i===curDay?'active':''}" onclick="switchDay(${i})">
       <div class="cnum">${i+1}</div>
-      <div style="flex:1;min-width:0">
-        <div class="clabel">${d.label}</div>
-        ${d.date?`<div class="cdate">${d.date.replace(/-/g,'/')}</div>`:''}
-      </div>
+      <div style="flex:1;min-width:0"><div class="clabel">${d.label}</div>${d.date?`<div class="cdate">${d.date.replace(/-/g,'/')}</div>`:''}</div>
       <span class="ccnt">${d.spots.length}</span>
     </button>`).join('');
 }
-
 function renderSb(){
   const sp=spots();const el=document.getElementById('sbspots');
   if(!sp.length){el.innerHTML='<div style="padding:4px 8px;font-size:12px;color:var(--tm)">まだスポットなし</div>';return}
   el.innerHTML=sp.map((s,i)=>`
-    <div class="sb-sp" onclick="scrollToCard(${i})">
-      <div class="sb-dot"></div>
-      <div class="sb-name">${s.name}</div>
-      <div class="sb-time">${s.arrival||s.startTime||'未設定'}</div>
-    </div>
+    <div class="sb-sp" onclick="scrollToCard(${i})"><div class="sb-dot"></div><div class="sb-name">${s.name}</div><div class="sb-time">${s.arrival||s.startTime||'未設定'}</div></div>
     ${i<sp.length-1&&s.seg?`<div class="sb-seg">${MICON[s.seg.mode||'car']} ${s.seg.mins?fmtMin(s.seg.mins):'…'}</div>`:''}`).join('');
 }
-
 function renderStats(){
   const sp=spots();
   document.getElementById('stS').textContent=sp.length;
@@ -919,44 +890,32 @@ function renderStats(){
   const ts=sp.reduce((a,s)=>a+(s.stay||0),0);
   document.getElementById('stT').textContent=sp.length>1?fmtMin(tt):'—';
   document.getElementById('stSt').textContent=sp.length?fmtMin(ts):'—';
-  if(sp.length){const l=sp[sp.length-1];document.getElementById('stE').textContent=(l.arrival||l.startTime)?addMin(l.arrival||l.startTime,l.stay||0):'未設定'}
+  if(sp.length){const l=sp[sp.length-1];document.getElementById('stE').textContent=(l.arrival||l.startTime)?addMin(l.arrival||l.startTime,l.stay||0):'未設定';}
   else document.getElementById('stE').textContent='—';
 }
-
 function renderTl(){
   const sp=spots();const el=document.getElementById('tl');
   if(!sp.length){el.innerHTML='<div class="tl-empty"><div class="big">🗺️</div><p>スポットがまだありません</p><p style="margin-top:4px;font-size:12px">フォームから追加しましょう！</p></div>';return}
-
   el.innerHTML=sp.map((s,i)=>{
     const isLast=i===sp.length-1;
     const seg=s.seg||{mode:'car',mins:0,auto:false};
     const nextSpot=sp[i+1];
     const depTime=addMin(s.arrival||s.startTime,s.stay||0);
-
     return`
     <div class="tl-item" draggable="true" data-idx="${i}"
-      ondragstart="onDragStart(event,${i})"
-      ondragover="onDragOver(event,${i})"
-      ondragleave="onDragLeave(event)"
-      ondrop="onDrop(event,${i})"
-      ondragend="onDragEnd(event)">
-      <div class="tl-left">
-        <div class="tl-dot"></div>
-        ${!isLast?'<div class="tl-line"></div>':''}
-      </div>
+      ondragstart="onDragStart(event,${i})" ondragover="onDragOver(event,${i})"
+      ondragleave="onDragLeave(event)" ondrop="onDrop(event,${i})" ondragend="onDragEnd(event)">
+      <div class="tl-left"><div class="tl-dot"></div>${!isLast?'<div class="tl-line"></div>':''}</div>
       <div class="tl-body">
-        <!-- spot card -->
         <div class="sc" id="card-${i}">
           <div class="sc-row">
             <div class="sc-l">
               <div class="sc-num">${i+1}</div>
               <div class="sc-name">${s.name}</div>
               <div class="sc-tags">
-                ${s.arrival
-                  ? `<span class="tag tt">🕐 ${s.arrival} 着</span>`
-                  : `<span class="tag" style="background:var(--bg);color:var(--tm);border:1px dashed var(--bm);cursor:pointer" onclick="openEdit(${i})" title="到着時刻を設定">🕐 未設定 ✏️</span>`}
+                ${s.arrival?`<span class="tag tt">🕐 ${s.arrival} 着</span>`:`<span class="tag" style="background:var(--bg);color:var(--tm);border:1px dashed var(--bm);cursor:pointer" onclick="openEdit(${i})">🕐 未設定 ✏️</span>`}
                 <span class="tag ts">⏱ 滞在 ${fmtMin(s.stay)}</span>
-                ${s.arrival ? `<span class="tag" style="background:var(--bg);color:var(--tm);border:1px solid var(--bm)">🏁 ${depTime} 発</span>` : ''}
+                ${s.arrival?`<span class="tag" style="background:var(--bg);color:var(--tm);border:1px solid var(--bm)">🏁 ${depTime} 発</span>`:''}
                 ${s.note?`<span class="tag tn">📝 ${s.note}</span>`:''}
               </div>
               ${s.addr?`<div class="sc-addr">📍 ${s.addr}</div>`:''}
@@ -968,8 +927,6 @@ function renderTl(){
             </div>
           </div>
         </div>
-
-        <!-- travel segment (only between spots) -->
         ${!isLast?`
         <div class="seg">
           <div class="seg-mode">
@@ -982,13 +939,12 @@ function renderTl(){
           </div>
           <div class="seg-dur">
             <label>移動時間</label>
-            <input type="number" min="0" max="999" value="${seg.mins||0}"
-              oninput="segMinsInput(${i},this.value)"
-              style="${seg.loading?'color:var(--a)':''}">
+            <input type="number" min="0" max="999" value="${seg.mins||0}" oninput="segMinsInput(${i},this.value)">
             <span style="font-size:12px;color:var(--tm)">分</span>
           </div>
-          ${seg.mode!=='train'?`<button class="seg-auto ${seg.loading?'loading':''}" onclick="segAutoBtn(${i})">${seg.loading?'計算中…':seg.mode==='walk'?'🔄 徒歩で計算':seg.mode==='bike'?'🔄 自転車で計算':'🔄 車で計算'}</button>`
-          :`<button class="seg-auto ${seg.loading?'loading':''}" onclick="segAutoBtn(${i})" title="直線距離ベースの概算です">${seg.loading?'計算中…':'🚃 概算で計算'}</button>`}
+          <button class="seg-auto ${seg.loading?'loading':''}" onclick="segAutoBtn(${i})">
+            ${seg.loading?'計算中…':seg.mode==='walk'?'🔄 徒歩で計算':seg.mode==='bike'?'🔄 自転車で計算':seg.mode==='train'?'🚃 概算で計算':'🔄 車で計算'}
+          </button>
           <div class="seg-arrow">
             <span>→</span>
             <strong>${nextSpot.arrival?nextSpot.arrival:'未設定'} 着</strong>
@@ -1000,81 +956,36 @@ function renderTl(){
     </div>`;
   }).join('');
 }
-
 function scrollToCard(i){const e=document.getElementById(`card-${i}`);if(e)e.scrollIntoView({behavior:'smooth',block:'center'})}
 
-/* ── drag & drop ── */
-let dragSrcIdx = -1;
-
-function onDragStart(e, i) {
-  dragSrcIdx = i;
-  e.dataTransfer.effectAllowed = 'move';
-  e.dataTransfer.setData('text/plain', i);
-  setTimeout(() => {
-    const el = e.currentTarget;
-    if (el) el.classList.add('dragging');
-  }, 0);
+/* ─ drag & drop ─ */
+let dragSrcIdx=-1;
+function onDragStart(e,i){dragSrcIdx=i;e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',i);setTimeout(()=>{const el=e.currentTarget;if(el)el.classList.add('dragging')},0)}
+function onDragOver(e,i){e.preventDefault();e.dataTransfer.dropEffect='move';if(i===dragSrcIdx)return;const el=e.currentTarget;const rect=el.getBoundingClientRect();const mid=rect.top+rect.height/2;el.classList.remove('drag-over-top','drag-over-bottom');el.classList.add(e.clientY<mid?'drag-over-top':'drag-over-bottom')}
+function onDragLeave(e){e.currentTarget.classList.remove('drag-over-top','drag-over-bottom')}
+function onDrop(e,targetIdx){
+  e.preventDefault();e.currentTarget.classList.remove('drag-over-top','drag-over-bottom');
+  if(dragSrcIdx===-1||dragSrcIdx===targetIdx)return;
+  const sp=spots();const rect=e.currentTarget.getBoundingClientRect();const mid=rect.top+rect.height/2;
+  let at=e.clientY<mid?targetIdx:targetIdx+1;
+  if(dragSrcIdx<at)at--;
+  const[moved]=sp.splice(dragSrcIdx,1);
+  moved.seg=moved.seg||{mode:'car',mins:0,auto:false};
+  sp.splice(at,0,moved);
+  sp.forEach((s,i)=>{if(i>0){s.arrival=null;}if(s.seg){s.seg.mins=0;s.seg.auto=false;}});
+  dragSrcIdx=-1;renderPlan();saveAll();
+  (async()=>{for(let i=0;i<sp.length-1;i++)await autoCalcSeg(i)})();
 }
+function onDragEnd(e){dragSrcIdx=-1;document.querySelectorAll('.tl-item').forEach(el=>el.classList.remove('dragging','drag-over-top','drag-over-bottom'))}
 
-function onDragOver(e, i) {
-  e.preventDefault();
-  e.dataTransfer.dropEffect = 'move';
-  if (i === dragSrcIdx) return;
-  const el = e.currentTarget;
-  const rect = el.getBoundingClientRect();
-  const mid = rect.top + rect.height / 2;
-  el.classList.remove('drag-over-top', 'drag-over-bottom');
-  el.classList.add(e.clientY < mid ? 'drag-over-top' : 'drag-over-bottom');
-}
-
-function onDragLeave(e) {
-  e.currentTarget.classList.remove('drag-over-top', 'drag-over-bottom');
-}
-
-function onDrop(e, targetIdx) {
-  e.preventDefault();
-  e.currentTarget.classList.remove('drag-over-top', 'drag-over-bottom');
-  if (dragSrcIdx === -1 || dragSrcIdx === targetIdx) return;
-
-  const sp = spots();
-  const rect = e.currentTarget.getBoundingClientRect();
-  const mid = rect.top + rect.height / 2;
-  // above mid → insert before targetIdx, below mid → insert after
-  let insertAt = e.clientY < mid ? targetIdx : targetIdx + 1;
-  if (dragSrcIdx < insertAt) insertAt--; // account for removal shift
-
-  const [moved] = sp.splice(dragSrcIdx, 1);
-  // reset segs since adjacency changed
-  moved.seg = moved.seg || {mode:'car', mins:0, auto:false};
-  sp.splice(insertAt, 0, moved);
-
-  // reset arrival and seg.mins for all spots (need recalc)
-  sp.forEach((s, i) => {
-    if (i > 0) { s.arrival = null; }
-    if (s.seg) { s.seg.mins = 0; s.seg.auto = false; }
-  });
-
-  dragSrcIdx = -1;
-  renderPlan();
-  saveAll();
-
-  // auto-recalc all segments after drop
-  (async () => {
-    for (let i = 0; i < sp.length - 1; i++) {
-      await autoCalcSeg(i);
-    }
-  })();
-}
-
-function onDragEnd(e) {
-  dragSrcIdx = -1;
-  document.querySelectorAll('.tl-item').forEach(el => {
-    el.classList.remove('dragging', 'drag-over-top', 'drag-over-bottom');
-  });
-}
+/* ─ Enter key on auth form ─ */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && document.getElementById('authScreen').classList.contains('active')) doAuth();
+});
 
 /* ── boot ── */
-loadAll();renderHome();
+if(restoreSession()){loadAll();renderNav();showScreen('homeScreen');renderHome();}
+else{showScreen('authScreen');}
 </script>
 </body>
 </html>
